@@ -1,0 +1,501 @@
+/* Global Styles */
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: #ddd;
+  line-height: 1.6;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Intro Section */
+.intro {
+  padding: 20px 0;
+  text-align: center;
+}
+.intro p {
+  font-size: 18px;
+  color: #ccc;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Strikethrough Price */
+.strikethrough {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 5px;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 0;
+}
+.hero-text {
+  flex: 1;
+  padding-right: 30px;
+}
+.hero-text h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+  color: #fff;
+  line-height: 1.4;
+}
+.hero-text p {
+  font-size: 20px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+.hero-image {
+  flex: 1;
+  text-align: center;
+}
+.hero-image img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Section Border */
+.section-border {
+  border-top: 1px solid #444;
+  margin: 40px 0;
+}
+
+/* Features Section */
+.features {
+  padding: 60px 0;
+}
+.features h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.feature {
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+.feature h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.feature p {
+  font-size: 16px;
+  color: #bbb;
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  padding: 60px 20px;
+  background: #333;
+  margin: 0 -20px;
+}
+.cta h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.cta p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+.cta-btn {
+  background: #555;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s;
+}
+.cta-btn:hover {
+  background: #777;
+}
+
+/* Backstory Section */
+.backstory {
+  padding: 60px 0;
+}
+.backstory-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Vertically center the image and text on desktop */
+  gap: 50px; /* Increased gap for better spacing */
+}
+.backstory-avatar {
+  width: 333px; /* Larger size on desktop for better visibility */
+  height: 333px;
+  border-radius: 50%; /* Rounded corners */
+  object-fit: cover; /* Ensure the image fits nicely in the circle */
+  margin-top:30px;
+  /* vert */
+}
+.backstory-text {
+  flex: 1; /* Take up remaining space */
+}
+.backstory h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.backstory p {
+  font-size: 18px;
+  margin: 0 0 20px;
+  color: #ccc;
+}
+.backstory a {
+  color: #aaa;
+  text-decoration: underline;
+}
+.backstory a:hover {
+  color: #fff;
+}
+
+.footer-right a {
+  color: #bbb;
+  /* margin-right: 20px; */
+  text-decoration: none;
+}
+.footer-right a:hover {
+  color: #fff;
+}
+
+
+.footer-left a {
+  color: #bbb;
+  margin-right: 20px;
+  text-decoration: none;
+}
+.footer-left a:hover {
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  padding: 40px 0;
+  background: #222;
+  color: #bbb;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.footer-left a {
+  color: #bbb;
+  margin-right: 20px;
+  text-decoration: none;
+}
+.footer-left a:hover {
+  color: #fff;
+}
+.footer-right {
+  text-align: right;
+}
+.footer-right p {
+  margin-bottom: 10px;
+}
+.email-signup {
+  display: flex;
+  gap: 10px;
+}
+.email-signup input {
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background: #333;
+  color: #ddd;
+}
+.email-signup button {
+  padding: 10px 20px;
+  background: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.email-signup button:hover {
+  background: #777;
+}
+.footer-bottom {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #444;
+  margin-top: 20px;
+}
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+}
+.footer-bottom a {
+  color: #bbb;
+  text-decoration: none;
+}
+.footer-bottom a:hover {
+  color: #fff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Intro Section */
+  .intro p {
+    font-size: 16px;
+  }
+
+  /* Hero Section */
+  .hero {
+    flex-direction: column;
+    padding: 40px 0;
+    text-align: center;
+  }
+  .hero-text {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+  .hero-text h1 {
+    font-size: 36px;
+  }
+  .hero-text p {
+    font-size: 16px;
+  }
+  .hero-image {
+    width: 100%;
+  }
+  .hero-image img {
+    max-width: 90%;
+  }
+  .cta-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  /* Strikethrough Price */
+  /* .strikethrough {
+    font-size: 16px;
+  } */
+
+  /* Features Section */
+  .features {
+    padding: 40px 0;
+  }
+  .features h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .feature {
+    padding: 15px;
+  }
+  .feature h3 {
+    font-size: 20px;
+  }
+  .feature p {
+    font-size: 14px;
+  }
+
+  /* CTA Section */
+  .cta {
+    padding: 40px 15px;
+    margin: 0;
+    background: #333;
+    border-radius: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  .cta h2 {
+    font-size: 28px;
+  }
+  .cta p {
+    font-size: 16px;
+  }
+
+  /* Backstory Section */
+  .backstory {
+    padding: 40px 0;
+  }
+  .backstory-content {
+    flex-direction: column; /* Stack image on top on mobile */
+    align-items: center; /* Center the image and text */
+    gap: 30px; /* Reduced gap for mobile */
+  }
+  .backstory-avatar {
+    width: 180px; /* Larger size on mobile for better visibility */
+    height: 180px;
+    margin-bottom: 20px; /* Space between image and text */
+  }
+  .backstory-text {
+    text-align: center; /* Center text on mobile */
+    padding: 0 20px; /* Add padding to ensure symmetry on both sides */
+  }
+  .backstory h2 {
+    font-size: 28px;
+  }
+  .backstory p {
+    font-size: 16px;
+    max-width: 100%; /* Ensure text takes full width within padding */
+  }
+
+  /* Footer */
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-left {
+    margin-bottom: 20px;
+  }
+  .footer-left a {
+    margin: 0 10px;
+  }
+  .footer-right {
+    text-align: center;
+    width: 100%;
+  }
+  .email-signup {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .email-signup input,
+  .email-signup button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .footer-bottom {
+    padding: 15px 0;
+  }
+  /* Footer */
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-left {
+    margin-bottom: 20px;
+  }
+  .footer-left a {
+    margin: 0 10px;
+  }
+  .footer-right {
+    text-align: center;
+    width: 100%;
+  }
+  .email-signup {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .email-signup input,
+  .email-signup button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .footer-bottom {
+    padding: 15px 0;
+  }
+}
+
+/* Extra small screens (below 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  /* Intro Section */
+  .intro p {
+    font-size: 14px;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 30px 0;
+  }
+  .hero-text h1 {
+    font-size: 28px;
+  }
+  .hero-text p {
+    font-size: 14px;
+  }
+  .cta-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  /* Strikethrough Price */
+  /* .strikethrough {
+    font-size: 14px;
+  } */
+
+  /* Features Section */
+  .features h2 {
+    font-size: 24px;
+  }
+  .feature h3 {
+    font-size: 18px;
+  }
+  .feature p {
+    font-size: 13px;
+  }
+
+  /* CTA Section */
+  .cta {
+    padding: 30px 10px;
+  }
+  .cta h2 {
+    font-size: 24px;
+  }
+  .cta p {
+    font-size: 14px;
+  }
+
+  /* Backstory Section */
+  .backstory-avatar {
+    width: 150px; /* Slightly smaller on very small screens */
+    height: 150px;
+  }
+  .backstory h2 {
+    font-size: 24px;
+  }
+  .backstory p {
+    font-size: 14px;
+  }
+  .backstory-text {
+    padding: 0 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Footer */
+  .footer-left a {
+    display: inline-block;
+    margin: 5px 10px;
+  }
+  .footer-bottom p {
+    font-size: 12px;
+  }
+}
