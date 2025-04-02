@@ -37,7 +37,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 80px 0;
+  padding: 90px 0;
 }
 .hero-text {
   flex: 1;
@@ -348,8 +348,8 @@ footer {
     gap: 30px; /* Reduced gap for mobile */
   }
   .backstory-avatar {
-    width: 180px; /* Larger size on mobile for better visibility */
-    height: 180px;
+    width: 200px; /* Larger size on mobile for better visibility */
+    height: 200px;
     margin-bottom: 20px; /* Space between image and text */
   }
   .backstory-text {
@@ -477,8 +477,9 @@ footer {
 
   /* Backstory Section */
   .backstory-avatar {
-    width: 150px; /* Slightly smaller on very small screens */
-    height: 150px;
+    width: 200px; /* Slightly smaller on very small screens */
+    height: 200px;
+
   }
   .backstory h2 {
     font-size: 24px;
