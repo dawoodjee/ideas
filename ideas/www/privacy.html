@@ -6,13 +6,6 @@
     <title>IDEAS | Privacy Policy</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-  
-      gtag('config', 'G-M93E0HE4ST');
-    </script>
 </head>
 <body>
     <div class="container">
@@ -78,7 +71,17 @@
 
             <div class="section">
                 <h2>7. Cookies & Tracking</h2>
-                <p>We use cookies and similar technologies (e.g., via Google Analytics 4 and Microsoft Clarity) on our website to enhance your browsing experience and analyze usage patterns. You can disable cookies in your browser settings, though this may limit analytics functionality and affect some features.</p>
+                <p>We use cookies and similar technologies on our website to enhance your browsing experience and analyze usage patterns. We do not serve ads or use cookies for ad tracking. Here’s how we categorize them:</p>
+                <ul>
+                    <li><strong>Essential Cookies:</strong> These cookies are necessary for the website to function properly. They include cookies that enable core functionality, such as user analytics (via Google Analytics 4) and user tracking on our site (via Microsoft Clarity). These are enabled by default to ensure the site works as intended and to help us improve the user experience.</li>
+                    <li><strong>Non-Essential Cookies:</strong> These cookies are optional and involve additional tracking beyond what’s necessary for basic functionality. They allow us to gather more detailed analytics and user behavior data to further enhance our services.</li>
+                </ul>
+                <p>When you visit our website, a cookie consent banner will appear, giving you the option to either:</p>
+                <ul>
+                    <li><strong>Accept all cookies:</strong> This allows both essential and non-essential cookies, enabling full functionality, user analytics, user tracking, and additional data collection to improve our services.</li>
+                    <li><strong>Refuse non-essential cookies:</strong> This allows only essential cookies (for user analytics and tracking via Google Analytics 4 and Microsoft Clarity) while preventing any additional tracking that isn’t necessary for the site’s core functionality.</li>
+                </ul>
+                <p>You can also manage cookies through your browser settings, though disabling essential cookies may affect the website’s functionality. For more details on how Google Analytics 4 and Microsoft Clarity handle data, please refer to their respective privacy policies linked above.</p>
             </div>
 
             <div class="section">
@@ -88,16 +91,16 @@
 
             <div class="section">
                 <h2>9. Contact Us</h2>
-                <p>If you have questions, contact me at adamdaw8djee at gmail.com</a>.</p>
+                <p>If you have questions, contact me at adamdaw8djee at gmail.com.</p>
             </div>
         </section>
 
         <br><br>
         {% include "/templates/includes/bottom_cta.html" %}
         <br><br>
-
     </div>
 
     {% include "/templates/includes/footer.html" %}
+    {% include "/templates/includes/tracking_consent.html" %}
 </body>
 </html>

@@ -58,41 +58,51 @@
  </script>
 
  <script>
+  // Function to check consent status
+  function getConsentStatus() {
+      const consent = localStorage.getItem('consent');
+      if (!consent) {
+          // Consent not initialized yet, default to no consent
+          return false;
+      }
+      return true;
+  }
+
   var url = 'https://wati-integration-prod-service.clare.ai/v2/watiWidget.js?63701';
   var s = document.createElement('script');
   s.type = 'text/javascript';
   s.async = true;
   s.src = url;
   var options = {
-    "enabled":true,
-    "chatButtonSetting":{
-        "backgroundColor":"#00e785",
-        "ctaText":"Feedback & Support",
-        "borderRadius":"25",
-        "marginLeft": "0",
-        "marginRight": "20",
-        "marginBottom": "20",
-        "ctaIconWATI":true,
-        "position":"right"
-    },
-    "brandSetting":{
-        "brandName":"IDEAS",
-        "brandSubTitle":"undefined",
-        "brandImg":"/files/Wati-logo.svg",
-        "welcomeText":"Hi there!\nFeel free to message me with any questions or feedback. \nI'll gladly respond as soon as I can.\n\nAdam",
-        "messageText":"Hello,%0AI want to talk about IDEAS",
-        "backgroundColor":"#00e785",
-        "ctaText":"Click to start chatting.",
-        "borderRadius":"25",
-        "autoShow":false,
-        "phoneNumber":"260760078191"
-    }
-    };
-    s.onload = function() {
-        CreateWhatsappChatWidget(options);
-    };
-    var x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
+      "enabled": true,
+      "chatButtonSetting": {
+          "backgroundColor": "#00e785",
+          "ctaText": getConsentStatus() ? "Feedback & Support" : "",
+          "borderRadius": "25",
+          "marginLeft": "0",
+          "marginRight": "20",
+          "marginBottom": getConsentStatus() ? "20" : "20",
+          "ctaIconWATI": true,
+          "position": "right"
+      },
+      "brandSetting": {
+          "brandName": "IDEAS",
+          "brandSubTitle": "undefined",
+          "brandImg": "/files/Wati-logo.svg",
+          "welcomeText": "Hi there! \n\nI'd love to hear your feedback and queries about IDEAS. \n\nFeel free to start the chat and I'll gladly respond as soon as I can.\n\nAdam",
+          "messageText": "Hello,%0AI want to talk about IDEAS",
+          "backgroundColor": "#00e785",
+          "ctaText": "Click to start chatting.",
+          "borderRadius": "25",
+          "autoShow": false,
+          "phoneNumber": "260760078191"
+      }
+  };
+  s.onload = function() {
+      CreateWhatsappChatWidget(options);
+  };
+  var x = document.getElementsByTagName('script')[0];
+  x.parentNode.insertBefore(s, x);
 </script>
 
   <!-- Script to Handle Turnstile on Page Load -->
@@ -121,23 +131,6 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M93E0HE4ST"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-M93E0HE4ST');
-  </script>
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "qxrpob6jt0");
-</script>
-
 </head>
 
 <body>
@@ -228,6 +221,7 @@
 </div>
 
 {% include "/templates/includes/footer.html" %}
+{% include "/templates/includes/tracking_consent.html" %}
 </body>
 
 </html>

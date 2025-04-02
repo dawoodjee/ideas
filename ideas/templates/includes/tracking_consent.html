@@ -1,0 +1,198 @@
+<style>
+    .consent-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        z-index: 1000;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .consent-content p {
+        margin: 0 0 10px;
+        font-size: 14px;
+    }
+    .consent-content a {
+        color: #aaa;
+        text-decoration: underline;
+    }
+    .consent-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .btn {
+        border: none;
+        padding: 8px 16px;
+        margin: 0 5px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    .btn-primary {
+        background: #007bff;
+        color: #fff;
+        padding: 10px 24px;
+    }
+    .btn-primary:hover {
+        background: #0056b3;
+    }
+    .btn-secondary {
+        background: #666;
+        color: #fff;
+    }
+    .btn-secondary:hover {
+        background: #4d4d4d;
+    }
+</style>
+
+<!-- Consent Banner -->
+<div id="consent-banner" class="consent-banner" style="display: none;">
+    <div class="consent-content">
+        <p>We use cookies to make our apps better for you. Essential cookies keep things running smoothly, while optional ones help us learn more about how you use our site—no ad tracking here! Choose <strong>Accept all</strong> to enable all cookies, or <strong>Refuse non-essential</strong> to keep things minimal. See our <a href="/privacy" target="_blank">privacy policy</a> for details.</p>
+        <div class="consent-buttons">
+            <button id="accept-all-btn" class="btn btn-primary">Accept all cookies</button>
+            <button id="essential-only-btn" class="btn btn-secondary">Refuse non-essential cookies</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Initialize GA4 Consent Mode with defaults (denied)
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    // Set consent default before GA4 script loads
+    gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+    });
+
+    // Log for debugging and Tag Assistant visibility
+    console.log('Consent Default Set:', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+    });
+    window.dataLayer.push({
+        'event': 'consent_default',
+        'consent_details': {
+            'ad_storage': 'denied',
+            'analytics_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        }
+    });
+
+    // Load GA4 script
+    (function() {
+        var gaScript = document.createElement('script');
+        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-M93E0HE4ST';
+        gaScript.async = true;
+        document.head.appendChild(gaScript);
+    })();
+
+    // Configure GA4 with debug mode
+    gtag('js', new Date());
+    gtag('config', 'G-M93E0HE4ST', { 'debug_mode': true });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const banner = document.getElementById('consent-banner');
+
+        const euCountries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'];
+
+        const hasConsented = localStorage.getItem('consent');
+        if (hasConsented) {
+            console.log('Consent found:', hasConsented);
+            banner.style.display = 'none';
+            updateConsentAndLoadScripts();
+            return;
+        }
+
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                const country = data.country_code;
+                const region = data.region;
+                const requiresConsent = euCountries.includes(country) || region === 'California';
+
+                if (requiresConsent && !hasConsented) {
+                    console.log('Consent required for:', country, region);
+                    banner.style.display = 'block';
+                } else {
+                    console.log('No consent required for:', country, region);
+                    localStorage.setItem('consent', 'accepted');
+                    localStorage.setItem('ad_storage', 'true');
+                    localStorage.setItem('analytics_storage', 'true');
+                    localStorage.setItem('ad_user_data', 'true');
+                    localStorage.setItem('ad_personalization', 'true');
+                    localStorage.setItem('clarity', 'true');
+                    updateConsentAndLoadScripts();
+                }
+            })
+            .catch(error => {
+                console.error('Geolocation failed:', error);
+                banner.style.display = 'block';
+            });
+
+        document.getElementById('accept-all-btn').addEventListener('click', () => {
+            localStorage.setItem('consent', 'accepted');
+            localStorage.setItem('ad_storage', 'true');
+            localStorage.setItem('analytics_storage', 'true');
+            localStorage.setItem('ad_user_data', 'true');
+            localStorage.setItem('ad_personalization', 'true');
+            localStorage.setItem('clarity', 'true');
+            banner.style.display = 'none';
+            updateConsentAndLoadScripts();
+        });
+
+        document.getElementById('essential-only-btn').addEventListener('click', () => {
+            localStorage.setItem('consent', 'essential');
+            localStorage.setItem('ad_storage', 'false');
+            localStorage.setItem('analytics_storage', 'true');
+            localStorage.setItem('ad_user_data', 'false');
+            localStorage.setItem('ad_personalization', 'false');
+            localStorage.setItem('clarity', 'true');
+            banner.style.display = 'none';
+            updateConsentAndLoadScripts();
+        });
+
+        function updateConsentAndLoadScripts() {
+            const adStorageConsent = localStorage.getItem('ad_storage') === 'true';
+            const analyticsConsent = localStorage.getItem('analytics_storage') === 'true';
+            const adUserDataConsent = localStorage.getItem('ad_user_data') === 'true';
+            const adPersonalizationConsent = localStorage.getItem('ad_personalization') === 'true';
+            const clarityConsent = localStorage.getItem('clarity') === 'true';
+
+            const consentUpdate = {
+                'ad_storage': adStorageConsent ? 'granted' : 'denied',
+                'analytics_storage': analyticsConsent ? 'granted' : 'denied',
+                'ad_user_data': adUserDataConsent ? 'granted' : 'denied',
+                'ad_personalization': adPersonalizationConsent ? 'granted' : 'denied'
+            };
+
+            gtag('consent', 'update', consentUpdate);
+
+            // Log for debugging and Tag Assistant visibility
+            console.log('Consent Updated:', consentUpdate);
+            window.dataLayer.push({
+                'event': 'consent_update',
+                'consent_details': consentUpdate
+            });
+
+            if (clarityConsent && !window.clarity) {
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/qxrpob6jt0";
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "qxrpob6jt0");
+            }
+        }
+    });
+</script>
